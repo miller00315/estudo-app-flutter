@@ -61,7 +61,7 @@ class RegisterComponents {
                 TextFormField(
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Please enter some text';
+                      return 'Insira um nome';
                     }
                     return null;
                   },
