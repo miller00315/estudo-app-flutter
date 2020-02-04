@@ -1,9 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:login_app/login/login-components.dart';
-import 'package:login_app/login/login-controller.dart';
-import 'package:login_app/main/main-page.dart';
-import 'package:login_app/register/register-page.dart';
+import 'package:login_app/routes.dart';
+import 'package:login_app/screens/login/login-components.dart';
+import 'package:login_app/screens/login/login-controller.dart';
 
 class LoginPage extends StatefulWidget{
   @override
@@ -13,20 +12,30 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPage extends State<LoginPage>{
 
+  LoginController bloc;
+  
+  @override
+  void initState() {
+    super.initState();
+
+    bloc = BlocProvider.of<LoginController>(context);
+    bloc.fetchUserData();
+
+  }
+
   goToMainScreen(BuildContext context) {
-    Navigator.of(context)
-    .push(MaterialPageRoute(builder: (context) => MainPage()));
   }
 
   goToRegisterScreen(BuildContext context) {
-    Navigator.of(context)
-    .push(MaterialPageRoute(builder: (context) => RegisterPage()));
+    Navigator.pushNamed(context, RegisterPageRoute);
   }
-  
+
+  goToRecoveryPassword(BuildContext context) {
+    Navigator.pushNamed(context, RecoveryPasswordRoute);
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    final LoginController bloc = BlocProvider.of<LoginController>(context);
 
     return Scaffold(
         body: SingleChildScrollView(
@@ -41,7 +50,7 @@ class _LoginPage extends State<LoginPage>{
                     children: <Widget>[
                       LoginComponents.emailInput(bloc, context),
                       LoginComponents.passwordInput(bloc, context),
-                      LoginComponents.forgetPassword(context),
+                      LoginComponents.forgetPassword(context, goToRecoveryPassword),
                       Spacer(),
                       LoginComponents.loginButton(bloc, context, goToMainScreen),
                       Spacer(),

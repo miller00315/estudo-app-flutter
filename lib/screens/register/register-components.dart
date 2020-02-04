@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_app/register/register-controller.dart';
+import 'package:login_app/screens/register/register-controller.dart';
 
 class RegisterComponents {
 

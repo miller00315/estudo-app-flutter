@@ -1,8 +1,6 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:login_app/login/login-controller.dart';
-import 'package:login_app/login/login-page.dart';
+import 'package:login_app/routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,10 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider<LoginController>(
+      onGenerateRoute: routes(),
+     /* home: BlocProvider<LoginController>(
         child: LoginPage(), 
         bloc: LoginController(),
-        ),
+        ), */
     );
   }
 }

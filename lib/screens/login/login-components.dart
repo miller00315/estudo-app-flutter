@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_app/login/login-controller.dart';
+import 'package:login_app/screens/login/login-controller.dart';
 
 class LoginComponents {
 
@@ -122,7 +122,7 @@ class LoginComponents {
             );
   }
 
-  static Widget forgetPassword(BuildContext context) {
+  static Widget forgetPassword(BuildContext context, onPressed) {
     return Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -132,10 +132,8 @@ class LoginComponents {
                     "Esqueci a senha",
                     style: TextStyle( color: Colors.grey, fontSize: 14),
                   ), 
-                  onPressed: () {
-                      print("pressed forget");
-                  },
-                ) 
+                  onPressed: () => onPressed(context),
+                ), 
               ),
             );
   }
@@ -163,8 +161,9 @@ class LoginComponents {
               "Login",
               style: TextStyle( 
                 color: Colors.white, 
-                fontSize: 20, fontWeight: 
-                FontWeight.bold),
+                fontSize: 20, 
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ), 
